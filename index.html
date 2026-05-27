@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>اختبار شخصية العيد الأردني | تاج الملكة 👑</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;700;800&display=swap" rel="stylesheet">
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+body{
+    font-family:'IBM Plex Sans Arabic',sans-serif;
+    background: radial-gradient(circle at top right,#312e81 0%,transparent 25%),
+                radial-gradient(circle at bottom left,#7c3aed 0%,transparent 25%),
+                #050816;
+    color:white;
+    min-height:100vh;
+    overflow-y:auto;
+    overflow-x:hidden;
+    padding:30px 15px;
+}
+.blur{
+    position:fixed;
+    width:300px;
+    height:300px;
+    border-radius:50%;
+    filter:blur(100px);
+    opacity:.3;
+    z-index:0;
+}
+.blur1{
+    background:#8b5cf6;
+    top:-100px;
+    right:-100px;
+}
+.blur2{
+    background:#ec4899;
+    bottom:-100px;
+    left:-100px;
+}
+.container{
+    position:relative;
+    z-index:5;
+    width:100%;
+    max-width:950px;
+    margin:auto;
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.08);
+    backdrop-filter:blur(15px);
+    border-radius:35px;
+    padding:45px 30px;
+    box-shadow:0 25px 70px rgba(0,0,0,.35);
+}
+.small{
+    color:#a78bfa;
+    letter-spacing:3px;
+    font-size:.9rem;
+}
+h1{
+    margin-top:15px;
+    font-size:3.8rem;
+    line-height:1.1;
+}
+h1 span{
+    color:#c084fc;
+}
+.desc{
+    margin-top:25px;
+    color:#d4d4d8;
+    line-height:2;
+    font-size:1.15rem;
+}
+.question{
+    margin-top:40px;
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.06);
+    border-radius:24px;
+    padding:25px;
+}
+.question h2{
+    font-size:1.35rem;
+    margin-bottom:20px;
+    color:#e9d5ff;
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+.option{
+    display:block;
+    width:100%;
+    margin-bottom:13px;
+    padding:14px 18px;
+    border-radius:16px;
+    border:1px solid rgba(255,255,255,.08);
+    background:rgba(255,255,255,.03);
+    color:white;
+    cursor:pointer;
+    transition:.25s;
+    text-align:right;
+    font-size:0.98rem;
+    font-weight:400;
+}
+.option:hover{
+    background:rgba(192,132,252,.15);
+    transform:translateY(-2px);
+}
+.option.selected{
+    background:linear-gradient(135deg,#8b5cf6,#c084fc);
+    border-color:transparent;
+}
+.btn{
+    margin-top:40px;
+    width:100%;
+    border:none;
+    background:white;
+    color:black;
+    padding:18px;
+    border-radius:18px;
+    font-size:1rem;
+    font-weight:800;
+    cursor:pointer;
+    transition:.3s;
+}
+.btn:hover{
+    transform:translateY(-3px);
+    background:#e9d5ff;
+}
+.result{
+    margin-top:40px;
+    display:none;
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:28px;
+    padding:35px;
+    animation:show .6s ease;
+}
+@keyframes show{
+    from{
+        opacity:0;
+        transform:translateY(15px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+.result h2{
+    font-size:2rem;
+    margin-bottom:20px;
+}
+.result p{
+    color:#d4d4d8;
+    line-height:2.2;
+    font-size:1.15rem;
+}
+.tag{
+    margin-top:25px;
+    display:inline-block;
+    background:rgba(192,132,252,.15);
+    color:#c084fc;
+    padding:12px 18px;
+    border-radius:50px;
+    font-weight:bold;
+}
+.queen-footer {
+    margin-top: 50px;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255,255,255,0.15);
+    text-align: center;
+    font-family: 'IBM Plex Sans Arabic', sans-serif;
+}
+.crown-icon {
+    font-size: 2.5rem;
+    display: inline-block;
+    animation: wave 1.5s infinite ease;
+}
+@keyframes wave {
+    0% { transform: rotate(0deg);}
+    25% { transform: rotate(8deg);}
+    75% { transform: rotate(-8deg);}
+    100% { transform: rotate(0deg);}
+}
+.greeting {
+    font-size: 1.9rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #fbbf24, #f59e0b, #fcd34d);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin: 15px 0 8px 0;
+    letter-spacing: 1px;
+    text-shadow: 0 0 10px rgba(251,191,36,0.3);
+}
+.phone-number {
+    font-size: 1.6rem;
+    font-weight: 700;
+    background: rgba(255,255,255,0.1);
+    display: inline-block;
+    padding: 12px 28px;
+    border-radius: 60px;
+    backdrop-filter: blur(4px);
+    margin-top: 5px;
+    direction: ltr;
+    font-family: monospace;
+    letter-spacing: 2px;
+    color: #facc15;
+    border: 1px solid rgba(250,204,21,0.5);
+}
+.footer-note {
+    color: #c4b5fd;
+    font-size: 0.9rem;
+    margin-top: 20px;
+    font-weight: 500;
+}
+@media(max-width:700px){
+    h1{
+        font-size:2.4rem;
+    }
+    .container{
+        padding:35px 18px;
+    }
+    .greeting{
+        font-size:1.4rem;
+    }
+    .phone-number{
+        font-size:1.2rem;
+        padding:8px 16px;
+    }
+}
+</style>
+</head>
+<body>
+<div class="blur blur1"></div>
+<div class="blur blur2"></div>
+<div class="container">
+    <div class="small">
+        🇯🇴 اختبار العيد الأردني الأصيل | تاج الملكة 🧿
+    </div>
+    <h1>
+        شو <span>نوع شخصيتك</span><br>
+        بعيد الأضحى؟
+    </h1>
+    <div class="desc">
+        🍖 يعطيك العافية! جاوب بكل صراحة ومصاريح <br>
+        رح تحدد: إذا حتاخذ أضلع ولا كلى؟ مين حيصير عليه "نطيحة"؟ وهل حتضل تحكي "عايدو الأطفال" وانت متكتك؟ 😂🐏
+    </div>
+
+    <!-- سؤال 1 التهاوش على اللحم -->
+    <div class="question">
+        <h2>🥩 1. حضر وقت توزيع لحمة الخروف ... شو بتصير بالزبط؟</h2>
+        <button class="option" data-value="bone">بتطلع حصتي كلها عظم بدون لحم (خسرت الجائزة الكبرى)</button>
+        <button class="option" data-value="fat">بيجوني قطعة كلها شحم وكرش (حظي زي الزفت)</button>
+        <button class="option" data-value="meat">بضبطها وآخذ أحمر + نطيحة 🍖 (خبير اللحم)</button>
+        <button class="option" data-value="fight">بتهاوش مع الكل عالقطعة الكبيرة وبتزعل 😤</button>
+    </div>
+
+    <!-- سؤال 2 عايدو الأطفال وهما ما بعايدو -->
+    <div class="question">
+        <h2>👶 2. طفل قريبك جا يعايدك ويسلم وعيونة على العيدية ... شو ردة فعلك؟</h2>
+        <button class="option" data-value="child">أحكيله "روح عايد أنت أولاً" ولا أعطيه مصاري 😂</button>
+        <button class="option" data-value="money">أعطيه بسرعة وأخاف يتفلسف</button>
+        <button class="option" data-value="lazy">أتمارض إنه محفظتي بالسيارة وبعدين أنسى أمره</button>
+        <button class="option" data-value="social">أصوره وأقلك شوفوا بركة العيد، وما أعطيه غير حبة علكة</button>
+    </div>
+
+    <!-- سؤال 3 العيدية -->
+    <div class="question">
+        <h2>💵 3. حدا كريم أعطاك عيدية 5 دنانير؟ شو بتسوي فيهم؟</h2>
+        <button class="option" data-value="money">أشتري شاورما وبطاطا وكاسة عصير (تتبخر)</button>
+        <button class="option" data-value="meat">أضيفهم ع حساب "لحمة العصرية" قبل لا تكبر</button>
+        <button class="option" data-value="lazy">أضيعهم بجيب البدلة وما ألاقيهم إلا بعد عيد الفطر</button>
+        <button class="option" data-value="social">أحكيلهم "الله يعطيكم العافية" وأنتظر جيب جديد</button>
+    </div>
+
+    <!-- سؤال 4 الغريب اللي بيجي بالعيد وما بنشوفه -->
+    <div class="question">
+        <h2>🫣 4. الغريب/القريب اللي بيجي كل عيد مرة وحدة وما بنشوفه بعده.. رأيك فيه؟</h2>
+        <button class="option" data-value="stranger">هذا مهو طبيعي، بس نكرمه ونستنى نشوفه بعد سنة</button>
+        <button class="option" data-value="social">أحكيله شكلك عملتلها سفرية يا أبو العيد</button>
+        <button class="option" data-value="lazy">ما بهتم، بنام وأكمل دوري</button>
+        <button class="option" data-value="fight">أفتح معه قضية ليه غايب؟؟ ليش بتجي مرة بالعيد؟ يحس حاله ضيف شرف 😂</button>
+    </div>
+
+    <!-- سؤال 5 اللي ما بقبل يطلع من البيت -->
+    <div class="question">
+        <h2>🏠 5. العيد كله، اقترحوا نزور الأهل بس أنت؟</h2>
+        <button class="option" data-value="lazy">ما بقبل أطلع، البيت بيتي والعيد عندي خلص 😤</button>
+        <button class="option" data-value="social">أطلع غصب وأكون كاسف وجه الجماعة كلها</button>
+        <button class="option" data-value="meat">أطلع إذا عرفت إنه في عزيمة منسف فاخرة</button>
+        <button class="option" data-value="money">أطلع عشان ألم عيديات وأرجع بسرعة</button>
+    </div>
+
+    <!-- سؤال 6 صاحب المشكله بالعيد -->
+    <div class="question">
+        <h2>🤯 6. أي مشكلة بتصير بالعيلة أول ما تنحل؟ أنت تكون...؟</h2>
+        <button class="option" data-value="fight">أنا اللي بعمل المشكلة من الأول (حراق عيد)</button>
+        <button class="option" data-value="social">أصلح بين الناس وأفرحهم (الدبلوماسي)</button>
+        <button class="option" data-value="lazy">أنا نايم وما حسيت بأي مشكلة</button>
+        <button class="option" data-value="meat">أشغل حالي باللحمة والطبخة وما ادخل براسي</button>
+    </div>
+
+    <!-- سؤال 7 لحم الخروف المشوي بعد التعليمة -->
+    <div class="question">
+        <h2>🔥 7. خلصنا المنسف، وقررنا نشوي "لحمة الخروف اللي ضحينا فيه" بعد التعليمة... انت؟</h2>
+        <button class="option" data-value="meat">أنا اللي بشرف عالشوي وآخذ أحسن قطعة مشوية</button>
+        <button class="option" data-value="fat">أنا اللي بتحرق اللحمة وبعمل فضيحة 🍖💀</button>
+        <button class="option" data-value="lazy">أنا اللي بنتظر لحد ما يجهزوا وآكل بدون تعب</button>
+        <button class="option" data-value="social">أصور المشاوي وأحط ستوري "يا سلام سلو"</button>
+    </div>
+
+    <!-- سؤال 8 الإضافي عن توزيع العيديات بين الأطفال والناس -->
+    <div class="question">
+        <h2>🎁 8. لو كل الناس حكتلك "عايد الأطفال" بس انت ما معك مصاري؟</h2>
+        <button class="option" data-value="child">أحكيلهم "والله العيدية أخلاق مش فلوس" وأهرب</button>
+        <button class="option" data-value="money">أستدين من أبو أخوي وأعطيهم وبعدين أندم</button>
+        <button class="option" data-value="lazy">أقعد بالبيت وما حد يشوفني (أفضل حل)</button>
+        <button class="option" data-value="social">أعطي الأطفال حلويات وبسكوت وأتصور كأني ملك كرم</button>
+    </div>
+
+    <button class="btn" onclick="analyze()">
+        🔮 حلل شخصيتي العيدية الأردنية 👀
+    </button>
+
+    <div class="result" id="result">
+        <h2 id="resultTitle">النتيجة 👀</h2>
+        <p id="resultText"></p>
+        <div class="tag" id="tag"></div>
+    </div>
+
+    <!-- FOOTER تاج الملكة مع تحيات 0772752241 -->
+    <div class="queen-footer">
+        <div class="crown-icon">👑🐏✨</div>
+        <div class="greeting">
+            كل عام وأنتم بخير وسلامة<br>تحيات تاج الملكة 🇯🇴❤️
+        </div>
+        <div class="phone-number">
+            📞 0772752241
+        </div>
+        <div class="footer-note">
+            لأي حدا حاب يعمل بطاقة زي هيك — تواصل مع تاج الملكة 🤍
+        </div>
+    </div>
+</div>
+
+<script>
+// اختيارات
+document.querySelectorAll(".question").forEach(question=>{
+    const options = question.querySelectorAll(".option");
+    options.forEach(option=>{
+        option.addEventListener("click",()=>{
+            options.forEach(o=>o.classList.remove("selected"));
+            option.classList.add("selected");
+        });
+    });
+});
+
+function analyze(){
+    let counts = {
+        meat: 0,      // متخصص لحم محظوظ
+        fat: 0,       // شحم وعضم
+        bone: 0,
+        fight: 0,     // مشاكس
+        social: 0,    // اجتماعي معايدات
+        money: 0,     // فاضي فلوس
+        lazy: 0,      // كسول نوم
+        child: 0,     // عايدو الاطفال وبخيل
+        stranger: 0,  // الغريب السنوي
+    };
+    
+    document.querySelectorAll(".question").forEach(question=>{
+        const selected = question.querySelector(".selected");
+        if(selected && selected.dataset.value){
+            counts[selected.dataset.value] = (counts[selected.dataset.value] || 0) + 1;
+        }
+    });
+    
+    let totalSelected = Object.values(counts).reduce((a,b)=>a+b,0);
+    if(totalSelected === 0){
+        alert("🤣 هات اختار إشي، ما تحكيش حالك زي اللي بده عيدية بدون معايدة!");
+        return;
+    }
+    
+    // تحديد الشخصية السائدة بناءً على أكثر تصنيف
+    let dominant = Object.keys(counts).reduce((a,b)=> counts[a] > counts[b] ? a : b);
+    
+    let title = "", text = "", tag = "";
+    
+    // شخصية اللحم والنطيحة
+    if(dominant === "meat"){
+        title = "🐑 سلطان اللحمة و الكنز الأحمر 🍖";
+        text = `ما شاء الله أنت "ذيب المنسف"! 😂 حصتك دايمًا نطيحة + لحم أحمر بدون دهون، كأنك صاحب الخروف.<br><br>
+        بعيد الأضحى الناس بتخاف تنافسك عالقطعة الكبيرة، وعيونك على المشاوي قبل لا تشتعل. ومع ذلك في ناس بتناديك "أبو ضلوع". نصيبك من البركة عالي، وعندك موهبة تلمع اللحمة قبل الطباخ.<br><br>
+        (لكن خفّف شوي لا يصير كرشك قصة ثانية)`;
+        tag = "🥩 ملك النطيحة | نسبة الشحم بصحنك: 0%";
+    }
+    else if(dominant === "fat"){
+        title = "💔 مسكين .. حصتك كلها دهن وكروش";
+        text = `يا حرام .. كل عيد بتجيك أسوأ قطعة لحم: شحم أبيض، عضم من غير لحم، وكرش ما حدا بدو إياها 😭<br><br>
+        بتقعد تتفرج عالناس بتتهاوش عاللحم الأحمر وانت ماسك شحمة.. غالبًا أقاربك "بيفلشوا" عليك.<br>
+        بس الله يعوضك بالعيدية ولا تزعل، بكرة العيد الجاي يمكن تجيك "النطيحة".`;
+        tag = "😭 لعنة اللحم .. حظ عاثر";
+    }
+    else if(dominant === "bone"){
+        title = "🦴 ضحية العضم .. ولا لحم ولا شي";
+        text = `عظم طويل بلا لحم، ضهر الغنم الله يرحمه..<br><br>
+        انت الشخص اللي الكل يحب يوزع عليه العضم لإنك ما بتتخانق، بس جواك ثوران عظيم.<br>
+        خذلك عيدية وعوّض حظك، ومرة جاي أمسك القطعة بايدك قبل التوزيع.`;
+        tag = "🦷 كل عيد وعضم جديد";
+    }
+    else if(dominant === "fight"){
+        title = "💢 المشكلجي الرسمي للعيد";
+        text = `يا رجل.. كل عيد بتعمل مشكلة صغيرة (أو كبيرة) 😂. بتتهاوش عاللحمة، بتزعل عالعيديات، بتحكي "عايدو الأطفال" وانت نفسك لا بتعايد ولا بتعطي.<br><br>
+        لكن بدونك العيد يكون هادي وممل، أنت راس الحارة وروح الأجواء الفرفوشة.<br>
+        بس حاول تخفف عشان ما يوصلك "جزمة" من والدتك 🤣`;
+        tag = "⚡ مصنع مشاكل العيد | درجة حرارة: عالية";
+    }
+    else if(dominant === "child"){
+        title = "🎭 أستاذ 'عايدو الأطفال' المحترف";
+        text = `والله عملك فنان! بتضل تحكيلهم "عايدو الأطفال ... عايدو الصغار " وانت ما معك مصاري عالأغلب 😂، حتى الأطفال بطلوا ييجوا جنبك.<br>
+        أسلوبك إنك توزع حلويات قديمة أو تقلك العيدية أخلاق ... كل سنة وأنت هيك.`;
+        tag = "🧸 ملك التهرب من العيديات";
+    }
+    else if(dominant === "lazy"){
+        title = "🛌 الدب القطبي ... ما بيخرج وما بيزور";
+        text = `أنت الشخص اللي بقول "أنا ما بطلع من البيت، العيد عندي". الكل يروح يزور وأنت غطيت راسك باللحاف. الأهل يزوروك غصب، وانت تكون نايم عالكنبة بالبيجامة.<br>
+        الأكلة توصل لك بالغرفة، وغالبًا بتصحى عشان تشوف في لحم ولا خلص.`;
+        tag = "🥱 معدل زياراتك = صفر | تاج الكسل";
+    }
+    else if(dominant === "money"){
+        title = "💸 مفلس اليوم الثاني من العيد";
+        text = `العيدية بايدك ما تكمّل ٣ ساعات .. بتصرفها على سندويشات، ألعاب، وتطلع مع الشباب، بعدين ترجع تتسلف من أمك عشان تعطي عيدية لأطفال الجيران.<br>
+        محفظتك تحت الإنعاش، وحتى لو جاتك نطيحة لحم تبيعها مشان فلوس زيادة 😂.`;
+        tag = "🏧 محفظة تحت الصيانة المستمرة";
+    }
+    else if(dominant === "social"){
+        title = "📱 سفير المعايدات | إمبراطور الستوريات";
+        text = `تتصل على ٣٠ شخص بالعيد، تبعت ١٠٠ معايدة واتساب، وتصور كل لحمة قبل ما تاكل. أنت عمود العيد الإجتماعي.<br>
+        حظك بالعيديات متوسط بس الناس بتحبك بسبب طاقتك. وبعد كل عزيمة تنزل: "الحمدلله على النعمة" مع فلتر.`;
+        tag = "✨ نجم السوشال ميديا بالعيد";
+    }
+    else if(dominant === "stranger"){
+        title = "🕵️ الغريب السنوي .. مرة كل عيد أضحى";
+        text = `أهلين بالغريب الكريم! أنت الشخص اللي يجي مرة بالعيد وبس، الكل يستقبلك بحفاوة ويسأل وين كانت تغيب؟<br>
+        انت تجيب فسحة "أجنبية" للعيلة، وتضيع بعدها سنة كاملة، يمكن تحضر المرة الجاية.`;
+        tag = "👻 ضيف العيد الغامض | مطلوب للاستفسارات";
+    }
+    else {
+        title = "🧿 شخصية متعددة المواهب بالعيد";
+        text = `أنا مش عارف شو وضعك بالزبط 😂 بس خليك متوقع كل شي: نصيبك من اللحم حيكون مفاجأة, وبدون مشاكل إن شاء الله.`;
+        tag = "🍢 مزيج عيد متنوع";
+    }
+    
+    // إضافة تلميع للواقعية 
+    text += `<br><br>🇯🇴 **واقع أردني صمخ:** إذا كنت اللي بتاخذ حصة عضم وشحم، الله يعوضك. وإذا كنت المشكلجي اعمل حسابك العيلة حتتآمر عليك بالمقلوبة.`;
+    
+    document.getElementById("result").style.display = "block";
+    document.getElementById("resultTitle").innerHTML = title;
+    document.getElementById("resultText").innerHTML = text;
+    document.getElementById("tag").innerHTML = tag;
+    
+    window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: "smooth"
+    });
+}
+</script>
+</body>
+</html>
